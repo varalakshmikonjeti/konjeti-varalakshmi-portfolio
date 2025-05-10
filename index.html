@@ -1,159 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varalakshmi Konjeti - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body and Page Styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 50px 0;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #333;
-            padding: 10px 0;
-            z-index: 1000;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px;
-        }
-
-        nav ul li a:hover {
-            background-color: #4CAF50;
-            border-radius: 5px;
-        }
-
-        section {
-            padding: 80px 20px;
-            margin-top: 60px; /* To avoid overlap with fixed navbar */
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-        }
-
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varalakshmi Konjeti - DevOps Engineer</title>
+  <style>
+    :root {
+      --primary-color: #2d3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f9f9f9;
+      --dark-text: #333;
+      --light-text: #fff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background-color: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(45, 62, 80, 0.8) 0%, rgba(52, 152, 219, 0.8) 100%);
+      z-index: 1;
+    }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid var(--secondary-color);
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .job-title {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+    
+    nav {
+      background-color: var(--secondary-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    
+    nav li {
+      margin: 0 1rem;
+    }
+    
+    nav a {
+      color: var(--light-text);
+      text-decoration: none;
+      padding: 1rem 0;
+      display: inline-block;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+    
+    nav a:hover, 
+    nav a.active {
+      border-bottom: 2px solid var(--light-text);
+    }
+    
+    section {
+      padding: 4rem 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-title {
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .experience-item {
+      margin-bottom: 2rem;
+    }
+    
+    .experience-title {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .experience-company {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .skill {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skill:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+    
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-item i {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-right: 1rem;
+      width: 30px;
+    }
+    
+    .contact-item a {
+      color: var(--dark-text);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-item a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .social-links a {
+      color: var(--primary-color);
+      background-color: #f1f1f1;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      transform: translateY(-3px);
+    }
+    
+    footer {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate {
+      animation: fadeIn 0.6s ease forwards;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav li {
+        margin: 0.5rem 0;
+      }
+    }
+    
+    /* Icons using Font Awesome */
+    .fas, .fab {
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      line-height: 1;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--secondary-color); 
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-color); 
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Header Section -->
+  <header id="home">
+    <div class="header-content animate">
+      <div style="display: flex; justify-content: center;">
+        <img src="profile.jpg" alt="Varalakshmi Konjeti" class="profile-img">
+      </div>
+      <h1>Varalakshmi Konjeti</h1>
+      <p class="job-title">DevOps Engineer</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/varalakshmi-konjeti-5b2408229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/varalakshmikonjeti" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:varalakshmikonjeti06@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <header>
-        <h1>Hi, I'm Varalakshmi Konjeti</h1>
-        <p>A passionate DevOps Engineer & Python enthusiast.</p>
-    </header>
+  <!-- About Section -->
+  <section id="about" class="animate">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="card">
+          <h3 class="card-title">Who I Am</h3>
+          <p>I am a passionate DevOps Engineer with experience in automating CI/CD pipelines, managing cloud infrastructure, and implementing containerization solutions. My goal is to streamline development processes and improve deployment efficiency through automation and best practices.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">What I Do</h3>
+          <p>I specialize in implementing DevOps methodologies to build seamless integration between development and operations. This includes setting up CI/CD pipelines, infrastructure as code, containerization, monitoring, and automation to enable faster and more reliable software delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a DevOps engineer with a passion for automation, cloud technologies, and continuous integration.</p>
-        <p>I have gained hands-on experience through a 6-month internship at Open Financial Technologies, where I worked on various cloud platforms, CI/CD pipelines, and infrastructure automation.</p>
-    </section>
+  <!-- Experience Section -->
+  <section id="experience" class="animate" style="background-color: #f1f1f1;">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="card">
+        <div class="experience-item">
+          <h3 class="experience-title">DevOps Intern</h3>
+          <p class="experience-company">OPEN Financial Technologies</p>
+          <p>During my 6-month DevOps internship, I worked on:</p>
+          <ul style="margin-left: 20px; margin-top: 10px;">
+            <li>Automating CI/CD pipelines using Jenkins to streamline deployment processes</li>
+            <li>Managing infrastructure on AWS, including EC2 instances, S3 buckets, and IAM roles</li>
+            <li>Containerizing applications using Docker and orchestrating with Kubernetes</li>
+            <li>Infrastructure provisioning using Terraform for creating and managing cloud resources</li>
+            <li>Migrating environments from AMD to ARM architecture and ensuring smooth transitions</li>
+            <li>Configuring monitoring tools like Sumo Logic for log management and alerting</li>
+            <li>Creating Docker base images that were used across different projects</li>
+            <li>Developing Ansible playbooks to automate application deployment based on manifest file configurations</li>
+            <li>Integrating Ansible scripts into Jenkins pipelines for consistent deployment processes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>AWS</li>
-            <li>Git</li>
-            <li>Linux</li>
-            <li>Jenkins</li>
-            <li>Docker</li>
-            <li>Kubernetes</li>
-            <li>Terraform</li>
-            <li>Ansible</li>
-            <li>VPC</li>
-            <li>Lambda</li>
-            <li>S3</li>
-        </ul>
-    </section>
+  <!-- Skills Section -->
+  <section id="skills" class="animate">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="card">
+        <h3 class="card-title">Technical Expertise</h3>
+        <div class="skills-container">
+          <span class="skill">AWS</span>
+          <span class="skill">Git</span>
+          <span class="skill">Linux</span>
+          <span class="skill">Jenkins</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Kubernetes</span>
+          <span class="skill">IAM</span>
+          <span class="skill">VPC</span>
+          <span class="skill">Terraform</span>
+          <span class="skill">Ansible</span>
+          <span class="skill">Python</span>
+          <span class="skill">Azure (basics)</span>
+          <span class="skill">S3</span>
+          <span class="skill">Lambda</span>
+          <span class="skill">Full Stack</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <ul>
-            <li>AI DevOps Engineer</li>
-            <li>Linux - Great Learning</li>
-            <li>Python - Great Learning</li>
-        </ul>
-    </section>
+  <!-- Contact Section -->
+  <section id="contact" class="animate" style="background-color: #f1f1f1;">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="card">
+        <div class="contact-info">
+          <div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:varalakshmikonjeti06@gmail.com">varalakshmikonjeti06@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <a href="tel:+918977191746">+91 8977191746</a>
+            </div>
+          </div>
+          <div>
+            <div class="contact-item">
+              <i class="fab fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/varalakshmi-konjeti-5b2408229/" target="_blank">LinkedIn Profile</a>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-github"></i>
+              <a href="https://github.com/varalakshmikonjeti" target="_blank">GitHub Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><a href="https://github.com/varalakshmikonjeti/project1">Project 1: Netflix Clone Deployment</a></li>
-            <li><a href="https://github.com/varalakshmikonjeti/project2">Project 2: Automated Environment Variable Management with Ansible</a></li>
-        </ul>
-    </section>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Varalakshmi Konjeti. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-    <footer>
-        <p>Contact me at <a href="mailto:varalakshmikonjeti06@gmail.com">varalakshmikonjeti06@gmail.com</a></p>
-        <p>Phone: <a href="tel:+918977191746">+91 8977191746</a></p>
-        <p>Find me on <a href="https://www.linkedin.com/in/varalakshmi-konjeti-5b2408229/" target="_blank">LinkedIn</a></p>
-    </footer>
+  <a href="#home" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
 
-    <!-- Smooth Scrolling JavaScript -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: 'smooth'
         });
-    </script>
+        
+        // Update active link
+        document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    
+    // Back to top button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Update active navigation link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Animate sections on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
