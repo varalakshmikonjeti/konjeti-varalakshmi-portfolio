@@ -4,352 +4,327 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Varalakshmi Konjeti - DevOps Engineer</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --primary-color: #2d3e50;
-      --secondary-color: #3498db;
-      --accent-color: #e74c3c;
-      --light-bg: #f9f9f9;
-      --dark-text: #333;
-      --light-text: #fff;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --primary: #1a2980;
+      --secondary: #26d0ce;
+      --accent: #ff512f;
+      --bg: #f8fafc;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
     }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--light-bg);
-      color: var(--dark-text);
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: #222;
       line-height: 1.6;
+      min-height: 100vh;
     }
-    
+
+    /* HERO SECTION */
     header {
-      background-color: var(--primary-color);
-      color: var(--light-text);
-      text-align: center;
-      padding: 2rem 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(120deg, var(--primary), var(--secondary), var(--accent));
+      background-size: 200% 200%;
+      animation: gradientMove 8s ease-in-out infinite;
       position: relative;
+      text-align: center;
+      color: #fff;
       overflow: hidden;
     }
-    
-    .header-content {
-      position: relative;
-      z-index: 2;
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(45, 62, 80, 0.8) 0%, rgba(52, 152, 219, 0.8) 100%);
-      z-index: 1;
-    }
-    
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 160px; height: 160px;
       border-radius: 50%;
-      border: 4px solid var(--secondary-color);
-      margin-bottom: 1rem;
+      border: 5px solid #fff;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
       object-fit: cover;
+      background: #fff;
     }
-    
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #fff, #ff512f, #26d0ce, #fff);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGradient 4s ease-in-out infinite;
     }
-    
+    @keyframes textGradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
     .job-title {
-      font-size: 1.2rem;
-      color: var(--secondary-color);
-      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
-    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+    .social-links a {
+      color: #fff;
+      background: rgba(255,255,255,0.15);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .social-links a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-4px) scale(1.08);
+    }
+
+    /* NAVIGATION */
     nav {
-      background-color: var(--secondary-color);
+      width: 100%;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: var(--shadow);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
-    
     nav ul {
       display: flex;
       justify-content: center;
       list-style: none;
+      padding: 0.5rem 0;
     }
-    
-    nav li {
-      margin: 0 1rem;
-    }
-    
+    nav li { margin: 0 1.5rem; }
     nav a {
-      color: var(--light-text);
-      text-decoration: none;
-      padding: 1rem 0;
-      display: inline-block;
+      color: var(--primary);
       font-weight: 500;
-      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.6rem 0;
       border-bottom: 2px solid transparent;
+      transition: color 0.3s, border-color 0.3s;
     }
-    
-    nav a:hover, 
-    nav a.active {
-      border-bottom: 2px solid var(--light-text);
+    nav a.active, nav a:hover {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
     }
-    
+
+    /* SECTIONS */
     section {
-      padding: 4rem 0;
+      padding: 4rem 0 3rem 0;
+      min-height: 60vh;
+      background: transparent;
     }
-    
     .container {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
-    
     .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
+      color: var(--primary);
+      letter-spacing: 1px;
       position: relative;
+      z-index: 1;
     }
-    
     .section-title::after {
       content: '';
-      width: 80px;
-      height: 3px;
-      background-color: var(--secondary-color);
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 0.5rem auto 0 auto;
+      border-radius: 2px;
     }
-    
-    .about-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    
+
+    /* GLASS CARDS */
     .card {
-      background-color: #fff;
-      border-radius: 8px;
+      background: var(--glass);
+      border-radius: 18px;
       box-shadow: var(--shadow);
       padding: 2rem;
       margin-bottom: 2rem;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
+      border: 1.5px solid rgba(26,41,128,0.08);
+      backdrop-filter: blur(4px);
     }
-    
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    
+    .card:hover { transform: translateY(-6px) scale(1.01); }
+
     .card-title {
-      color: var(--secondary-color);
+      font-size: 1.3rem;
+      color: var(--accent);
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
     }
-    
-    .experience-item {
-      margin-bottom: 2rem;
+
+    /* ABOUT */
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
     }
-    
-    .experience-title {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
+    .about-content .card {
+      flex: 1 1 320px;
+      min-width: 280px;
     }
-    
-    .experience-company {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--secondary-color);
+
+    /* EXPERIENCE */
+    .experience-item ul {
+      margin-left: 1.2rem;
+      margin-top: 0.7rem;
     }
-    
+
+    /* SKILLS */
     .skills-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.5rem;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
     }
-    
     .skill {
-      background-color: var(--primary-color);
-      color: var(--light-text);
-      padding: 0.5rem 1rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 0.5rem 1.2rem;
       border-radius: 20px;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
+      font-size: 1rem;
+      font-weight: 500;
+      box-shadow: 0 1px 4px rgba(26,41,128,0.07);
+      transition: background 0.3s, transform 0.2s;
+      cursor: pointer;
+      letter-spacing: 0.5px;
     }
-    
     .skill:hover {
-      background-color: var(--secondary-color);
-      transform: translateY(-3px);
+      background: var(--accent);
+      transform: scale(1.08);
     }
-    
+
+    /* CONTACT */
     .contact-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 2rem;
+      justify-content: center;
     }
-    
     .contact-item {
       display: flex;
       align-items: center;
       margin-bottom: 1rem;
+      font-size: 1.07rem;
     }
-    
     .contact-item i {
       font-size: 1.5rem;
-      color: var(--secondary-color);
+      color: var(--secondary);
       margin-right: 1rem;
       width: 30px;
     }
-    
     .contact-item a {
-      color: var(--dark-text);
+      color: var(--primary);
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
     }
-    
-    .contact-item a:hover {
-      color: var(--secondary-color);
+    .contact-item a:hover { color: var(--accent); }
+
+    /* CERTIFICATES */
+    #certificates ul {
+      margin-left: 1.2rem;
+      margin-top: 0.7rem;
     }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+      text-align: center;
+      padding: 2rem 0 1.2rem 0;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
       margin-top: 2rem;
     }
-    
-    .social-links a {
-      color: var(--primary-color);
-      background-color: #f1f1f1;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    
-    .social-links a:hover {
-      background-color: var(--secondary-color);
-      color: var(--light-text);
-      transform: translateY(-3px);
-    }
-    
-    footer {
-      background-color: var(--primary-color);
-      color: var(--light-text);
-      text-align: center;
-      padding: 2rem 0;
-    }
-    
+
+    /* BACK TO TOP */
     .back-to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--secondary-color);
-      color: var(--light-text);
-      width: 40px;
-      height: 40px;
+      bottom: 32px;
+      right: 32px;
+      background: var(--accent);
+      color: #fff;
+      width: 48px; height: 48px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       text-decoration: none;
-      box-shadow: var(--shadow);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
       opacity: 0;
       pointer-events: none;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s, background 0.3s;
+      z-index: 200;
+      font-size: 1.3rem;
     }
-    
     .back-to-top.active {
       opacity: 1;
       pointer-events: auto;
     }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: var(--primary); }
+
+    /* ANIMATIONS */
+    .animate { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(.4,0,.2,1); }
+    .animate.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-content { flex-direction: column; align-items: stretch; }
     }
-    
-    .animate {
-      animation: fadeIn 0.6s ease forwards;
-    }
-    
-    /* Responsive design */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      nav li {
-        margin: 0.5rem 0;
-      }
-    }
-    
-    /* Icons using Font Awesome */
-    .fas, .fab {
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      text-rendering: auto;
-      line-height: 1;
-    }
-    
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1; 
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: var(--secondary-color); 
-      border-radius: 5px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-color); 
+    @media (max-width: 600px) {
+      .container { padding: 0 0.5rem; }
+      section { padding: 2.5rem 0 2rem 0; }
+      .profile-img { width: 110px; height: 110px; }
+      .hero-title { font-size: 2rem; }
+      nav ul { flex-direction: column; }
+      nav li { margin: 0.5rem 0; }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header Section -->
+  <!-- HERO SECTION -->
   <header id="home">
-    <div class="header-content animate">
-      <div style="display: flex; justify-content: center;">
-        <img src="profile.jpeg" alt="Varalakshmi Konjeti" class="profile-img">
-      </div>
-      <h1>Varalakshmi Konjeti</h1>
-      <p class="job-title">DevOps Engineer</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/varalakshmi-konjeti-5b2408229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/varalakshmikonjeti" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="mailto:varalakshmikonjeti06@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      </div>
+    <img src="profile.jpeg" alt="Varalakshmi Konjeti" class="profile-img">
+    <h1 class="hero-title">Varalakshmi Konjeti</h1>
+    <p class="job-title">DevOps Engineer</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/varalakshmi-konjeti-5b2408229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/varalakshmikonjeti" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:varalakshmikonjeti06@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
   </header>
 
-  <!-- Navigation -->
+  <!-- NAVIGATION -->
   <nav>
     <ul>
       <li><a href="#home" class="active">Home</a></li>
@@ -357,11 +332,11 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#certificates">certificates</a></li>
+      <li><a href="#certificates">Certificates</a></li>
     </ul>
   </nav>
 
-  <!-- About Section -->
+  <!-- ABOUT -->
   <section id="about" class="animate">
     <div class="container">
       <h2 class="section-title">About Me</h2>
@@ -378,32 +353,32 @@
     </div>
   </section>
 
-  <!-- Experience Section -->
-  <section id="experience" class="animate" style="background-color: #f1f1f1;">
+  <!-- EXPERIENCE -->
+  <section id="experience" class="animate">
     <div class="container">
       <h2 class="section-title">Experience</h2>
       <div class="card">
         <div class="experience-item">
-          <h3 class="experience-title">DevOps Intern</h3>
+          <h3 class="card-title">DevOps Intern</h3>
           <p class="experience-company">OPEN Financial Technologies</p>
           <p>During my 6-month DevOps internship, I worked on:</p>
-          <ul style="margin-left: 20px; margin-top: 10px;">
+          <ul>
             <li>Automating CI/CD pipelines using Jenkins to streamline deployment processes</li>
-            <li>Managing infrastructure on AWS, including EC2 instances, S3 buckets, and IAM roles</li>
-            <li>Containerizing applications using Docker and orchestrating with Kubernetes</li>
-            <li>Infrastructure provisioning using Terraform for creating and managing cloud resources</li>
-            <li>Migrating environments from AMD to ARM architecture and ensuring smooth transitions</li>
-            <li>Configuring monitoring tools like Sumo Logic for log management and alerting</li>
-            <li>Creating Docker base images that were used across different projects</li>
-            <li>Developing Ansible playbooks to automate application deployment based on manifest file configurations</li>
-            <li>Integrating Ansible scripts into Jenkins pipelines for consistent deployment processes</li>
+            <li>Managing infrastructure on AWS, including EC2, S3, IAM</li>
+            <li>Containerizing applications with Docker and orchestrating with Kubernetes</li>
+            <li>Infrastructure provisioning using Terraform</li>
+            <li>Migrating environments from AMD to ARM architecture</li>
+            <li>Configuring monitoring tools like Sumo Logic</li>
+            <li>Creating Docker base images for projects</li>
+            <li>Developing Ansible playbooks for deployment automation</li>
+            <li>Integrating Ansible scripts into Jenkins pipelines</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
+  <!-- SKILLS -->
   <section id="skills" class="animate">
     <div class="container">
       <h2 class="section-title">Skills</h2>
@@ -430,8 +405,8 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="animate" style="background-color: #f1f1f1;">
+  <!-- CONTACT -->
+  <section id="contact" class="animate">
     <div class="container">
       <h2 class="section-title">Contact Me</h2>
       <div class="card">
@@ -461,8 +436,8 @@
     </div>
   </section>
 
-  <!-- Certificates Section -->
-<section id="certificates" class="animate">
+  <!-- CERTIFICATES -->
+  <section id="certificates" class="animate">
     <div class="container">
       <h2 class="section-title">Certificates</h2>
       <div class="card">
@@ -476,16 +451,16 @@
       </div>
     </div>
   </section>
-  
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p>&copy; 2025 Varalakshmi Konjeti. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <a href="#home" class="back-to-top" id="backToTop">
+  <!-- BACK TO TOP BUTTON -->
+  <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
     <i class="fas fa-arrow-up"></i>
   </a>
 
@@ -494,75 +469,53 @@
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-        
-        window.scrollTo({
-          top: targetSection.offsetTop,
-          behavior: 'smooth'
-        });
-        
-        // Update active link
+        window.scrollTo({ top: targetSection.offsetTop - 10, behavior: 'smooth' });
         document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
         this.classList.add('active');
       });
     });
-    
-    // Back to top button functionality
+
+    // Back to top button
     const backToTopButton = document.getElementById('backToTop');
-    
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
+      if (window.pageYOffset > 400) {
         backToTopButton.classList.add('active');
       } else {
         backToTopButton.classList.remove('active');
       }
     });
-    
-    backToTopButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+
+    // Animated sections on scroll
+    function revealOnScroll() {
+      document.querySelectorAll('.animate').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          section.classList.add('visible');
+        }
       });
-    });
-    
-    // Update active navigation link on scroll
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Update active nav link on scroll
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('section');
       const navLinks = document.querySelectorAll('nav a');
-      
       let current = '';
-      
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop - 200) {
+        const sectionTop = section.offsetTop - 120;
+        if (window.pageYOffset >= sectionTop) {
           current = section.getAttribute('id');
         }
       });
-      
       navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
           link.classList.add('active');
         }
       });
-    });
-    
-    // Animate sections on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
     });
   </script>
 </body>
