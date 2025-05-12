@@ -41,7 +41,7 @@
     }
 
     /* NAVIGATION */
-    nav {
+    .main-nav {
       position: fixed;
       top: 0; left: 0; width: 100vw;
       z-index: 100;
@@ -67,30 +67,12 @@
       color: #00ffe7;
       font-weight: bold;
     }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      z-index: 200;
-    }
-    .hamburger span {
-      height: 4px;
-      width: 100%;
-      background: #00ffe7;
-      margin: 4px 0;
-      border-radius: 2px;
-      display: block;
-      transition: 0.4s;
-    }
-    nav ul {
+    .main-nav ul {
       display: flex; justify-content: center; align-items: center;
       list-style: none; margin: 0; padding: 0.7rem 0;
       gap: 2.5rem;
     }
-    nav a {
+    .main-nav a {
       color: var(--neon1);
       font-family: 'Orbitron', sans-serif;
       font-size: 1.1rem;
@@ -101,55 +83,70 @@
       transition: background 0.3s, color 0.3s;
       position: relative;
     }
-    nav a.active, nav a:hover {
+    .main-nav a.active, .main-nav a:hover {
       background: linear-gradient(90deg, var(--neon2), var(--neon1));
       color: #232946;
       box-shadow: 0 2px 12px var(--neon2);
     }
-    /* Hamburger styles for mobile */
-    @media (max-width: 768px) {
-      .nav-container {
-        padding: 0 0.5rem;
+
+    /* BOTTOM NAVIGATION (Mobile Only) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; width: 100vw;
+      background: rgba(24,28,36,0.98);
+      box-shadow: 0 -2px 24px 0 rgba(0,255,231,0.12);
+      border-top-left-radius: 1.3rem;
+      border-top-right-radius: 1.3rem;
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      height: 64px;
+      z-index: 1000;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .bottom-nav a {
+      flex: 1;
+      text-align: center;
+      color: var(--neon2);
+      text-decoration: none;
+      font-size: 1.3rem;
+      padding: 0.7rem 0 0.3rem 0;
+      border-radius: 0.8rem;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.1rem;
+    }
+    .bottom-nav a.active, .bottom-nav a:focus, .bottom-nav a:hover {
+      background: linear-gradient(90deg, var(--neon2), var(--neon1));
+      color: #232946;
+    }
+    .bottom-nav span {
+      font-size: 0.7rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-top: 0.1rem;
+    }
+
+    /* Hide main nav on small screens, show bottom nav */
+    @media (max-width: 900px) {
+      .main-nav {
+        display: none;
       }
-      nav ul {
-        position: absolute;
-        top: 56px;
-        left: 0;
-        width: 100vw;
-        background: rgba(24,28,36,0.97);
-        flex-direction: column;
-        align-items: center;
-        gap: 1.2rem;
-        padding: 2rem 0 2rem 0;
-        margin: 0;
-        box-shadow: 0 8px 32px 0 rgba(0,255,231,0.08);
-        border-bottom: 2px solid #00ffe7;
-        transform: translateY(-120%);
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.4s cubic-bezier(.4,0,.2,1);
-        z-index: 100;
-      }
-      nav ul.open {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .hamburger {
+      .bottom-nav {
         display: flex;
       }
-      .nav-logo {
-        font-size: 1.1rem;
+    }
+    /* Show main nav on desktop, hide bottom nav */
+    @media (min-width: 901px) {
+      .main-nav {
+        display: block;
       }
-    }
-    .hamburger.open span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 7px);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
+      .bottom-nav {
+        display: none;
+      }
     }
 
     /* HERO SECTION */
@@ -450,17 +447,11 @@
 </head>
 <body>
   <div class="animated-bg"></div>
-  <!-- NAVIGATION -->
-  <nav>
+
+  <!-- Desktop/Tablet Navigation -->
+  <nav class="main-nav">
     <div class="nav-container">
-      <div class="nav-logo">
-        VK
-      </div>
-      <div class="hamburger" id="hamburger" aria-label="Open navigation" tabindex="0">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <div class="nav-logo">VK</div>
       <ul id="navLinks">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -470,6 +461,16 @@
         <li><a href="#certificates">Certificates</a></li>
       </ul>
     </div>
+  </nav>
+
+  <!-- Bottom Navigation (Mobile Only) -->
+  <nav class="bottom-nav">
+    <a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#about"><i class="fas fa-user"></i><span>About</span></a>
+    <a href="#experience"><i class="fas fa-briefcase"></i><span>Exp</span></a>
+    <a href="#skills"><i class="fas fa-tools"></i><span>Skills</span></a>
+    <a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    <a href="#certificates"><i class="fas fa-certificate"></i><span>Certs</span></a>
   </nav>
 
   <!-- HERO SECTION -->
@@ -615,35 +616,56 @@
   </a>
 
   <script>
-    // Hamburger menu functionality
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    // Optional: close menu when a link is clicked (on mobile)
-    document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
+    // Bottom nav highlight on scroll
+    const navLinks = [
+      {selector: '.bottom-nav a[href="#home"]', section: 'home'},
+      {selector: '.bottom-nav a[href="#about"]', section: 'about'},
+      {selector: '.bottom-nav a[href="#experience"]', section: 'experience'},
+      {selector: '.bottom-nav a[href="#skills"]', section: 'skills'},
+      {selector: '.bottom-nav a[href="#contact"]', section: 'contact'},
+      {selector: '.bottom-nav a[href="#certificates"]', section: 'certificates'}
+    ];
+    function highlightNav() {
+      let scrollPos = window.scrollY || window.pageYOffset;
+      navLinks.forEach(({selector, section}) => {
+        const sec = document.getElementById(section);
+        const link = document.querySelector(selector);
+        if (sec && link) {
+          const top = sec.offsetTop - 100;
+          const bottom = sec.offsetTop + sec.offsetHeight - 100;
+          if (scrollPos >= top && scrollPos < bottom) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+    }
+    window.addEventListener('scroll', highlightNav);
+    window.addEventListener('load', highlightNav);
+
+    // Smooth scroll for bottom nav
+    document.querySelectorAll('.bottom-nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            window.scrollTo({top: target.offsetTop - 40, behavior: 'smooth'});
+          }
+        }
       });
     });
-    // Optional: allow keyboard toggle
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        hamburger.click();
-      }
-    });
 
-    // Smooth scrolling for navigation
-    document.querySelectorAll('nav a').forEach(anchor => {
+    // Smooth scrolling for desktop nav
+    document.querySelectorAll('.main-nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
         window.scrollTo({ top: targetSection.offsetTop - 10, behavior: 'smooth' });
-        document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+        document.querySelectorAll('.main-nav a').forEach(link => link.classList.remove('active'));
         this.classList.add('active');
       });
     });
@@ -670,10 +692,10 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
 
-    // Update active nav link on scroll
+    // Update active nav link on scroll for desktop nav
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('nav a');
+      const navLinks = document.querySelectorAll('.main-nav a');
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 120;
