@@ -50,6 +50,41 @@
       box-shadow: 0 2px 24px rgba(0,255,231,0.08);
       border-bottom: 1.5px solid var(--neon1);
     }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      position: relative;
+    }
+    .nav-logo {
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      user-select: none;
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffe7;
+      font-weight: bold;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 200;
+    }
+    .hamburger span {
+      height: 4px;
+      width: 100%;
+      background: #00ffe7;
+      margin: 4px 0;
+      border-radius: 2px;
+      display: block;
+      transition: 0.4s;
+    }
     nav ul {
       display: flex; justify-content: center; align-items: center;
       list-style: none; margin: 0; padding: 0.7rem 0;
@@ -71,6 +106,51 @@
       color: #232946;
       box-shadow: 0 2px 12px var(--neon2);
     }
+    /* Hamburger styles for mobile */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 0.5rem;
+      }
+      nav ul {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100vw;
+        background: rgba(24,28,36,0.97);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 2rem 0 2rem 0;
+        margin: 0;
+        box-shadow: 0 8px 32px 0 rgba(0,255,231,0.08);
+        border-bottom: 2px solid #00ffe7;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(.4,0,.2,1);
+        z-index: 100;
+      }
+      nav ul.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .nav-logo {
+        font-size: 1.1rem;
+      }
+    }
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 7px);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
 
     /* HERO SECTION */
     header {
@@ -79,6 +159,7 @@
       text-align: center;
       position: relative;
       z-index: 2;
+      padding-top: 80px;
     }
     .avatar-glow {
       width: 180px; height: 180px;
@@ -353,16 +434,44 @@
     }
     @media (max-width: 600px) {
       .container { padding: 0 0.5rem; }
-      section { padding: 2.5rem 0 2rem 0; }
-      .avatar-glow { width: 110px; height: 110px; }
-      .avatar-glow img { width: 95px; height: 95px; }
-      .hero-title { font-size: 1.3rem; min-height: 1.7rem; }
-      nav ul { flex-direction: column; gap: 1rem; }
+      section { padding: 1.5rem 0 1rem 0; }
+      .avatar-glow { width: 80px; height: 80px; margin-bottom: 1rem;}
+      .avatar-glow img { width: 70px; height: 70px; }
+      .hero-title { font-size: 1.1rem; min-height: 1.3rem; letter-spacing: 1px; padding: 0 0.2rem;}
+      .job-title { font-size: 1rem; margin-bottom: 1rem;}
+      .social-links { gap: 0.5rem; margin-top: 0.7rem;}
+      .social-links a { width: 38px; height: 38px; font-size: 1.1rem;}
+      .section-title { font-size: 1.1rem; margin-bottom: 1.2rem;}
+      .card { padding: 1rem 0.7rem; margin-bottom: 1rem;}
+      .skills-container { gap: 0.5rem;}
+      .skill { font-size: 0.85rem; padding: 0.3rem 0.8rem;}
     }
   </style>
 </head>
 <body>
   <div class="animated-bg"></div>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        VK
+      </div>
+      <div class="hamburger" id="hamburger" aria-label="Open navigation" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- HERO SECTION -->
   <header id="home">
     <div class="avatar-glow">
@@ -376,18 +485,6 @@
       <a href="mailto:varalakshmikonjeti06@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
   </header>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-    </ul>
-  </nav>
 
   <!-- ABOUT -->
   <section id="about" class="animate">
@@ -518,6 +615,27 @@
   </a>
 
   <script>
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    // Optional: close menu when a link is clicked (on mobile)
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+    // Optional: allow keyboard toggle
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        hamburger.click();
+      }
+    });
+
     // Smooth scrolling for navigation
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
